@@ -1,0 +1,36 @@
+ 
+=======  ../../gradeA6.sh  ==============================
+ 
+
+20 / 20 points: Your train() function works.
+
+10 / 10 points: Results of experiments for varying values of n_hiddens_list, n_trials, n_steps_per_trial, n_scg_iterations, and gamma.
+
+5 / 10 points: Discussion of these experiments.
+
+   Missing details.
+
+20 / 20 points: Successful robot with four links of lengths, 4, 3, 3, and 2.
+
+5 / 10 points: Results of experiments for varying values of parameters.
+
+  Missing some parameter variations.
+
+5 / 10 points: Discussion of these experiments.
+
+  Missing details.
+
+10 / 10 points: Successful experiments with five actions per joint: [-0.1, -0.05, 0, 0.05, 0.1].
+
+5 / 5 points: Results of experiments for varying values of parameters.
+
+5 / 5 points: Discussion of these experiments.
+
+
+
+-30 points because your notebook is so similar to another's notebook.  Some of the
+    experiments, misspellings, and even the numerical results are identical.
+
+======================================================================
+eswaransuraj FINAL GRADE is  55  / 100
+======================================================================
