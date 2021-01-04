@@ -1,0 +1,69 @@
+ 
+=======  ../../gradeA1.sh  ==============================
+ 
+[22;0t]0;IPython: solutions/eswaransuraj
+======================= Code Execution =======================
+
+Extracting python code from notebook named 'eswaransuraj_185268_16296345_ESWARAN-A1-1.ipynb' and storing in notebookcode.py
+Removing all statements that are not function or class defs or import statements.
+
+Testing
+    X = np.arange(1, 11).reshape(-1, 1)
+    W = (5 - np.arange(1, 5).reshape(-1, 1)) * 0.1
+    Y = polynomial_model(X, W)
+
+
+--- 20/20 points. Returned correct values.
+
+Testing
+    X = np.arange(1, 11).reshape(-1, 1)
+    W = np.zeros((4, 1))
+    Y = polynomial_model(X, W)
+    T = np.ones((10, 1))
+    gradient = polynomial_gradient(X, T, W)
+
+[[  -2.]
+ [ -11.]
+ [ -77.]
+ [-605.]]
+
+--- 20/20 points. Returned correct values.
+
+Testing
+    X = np.array([1, 2, 3, 4, 5, 8, 9, 11]).reshape((-1, 1))
+    T = (X - 5) * 0.05 + 0.002 * (X - 8)**2
+    W = np.ones((5, 1))
+    rho = 0.01
+    n_steps = 100
+    W, _, _ = gradient_descent_adam(polynomial_model, polynomial_gradient, rmse,
+                                    X, T, W, rho, n_steps)
+
+
+--- 20/20 points. Returned correct values.
+
+======================================================================
+eswaransuraj Execution Grade is 60 / 60
+======================================================================
+
+10 / 10 Reading in air quality data and plotting it correctly.
+
+7 / 10 points. Applying the Adam optimizer to the air quality data using your polynomial model and gradient correctly.
+
+3 / 10 points.  Plotting the resulting error curve in one graph and plotting the model predictions on top of data
+        correctly.  Also describe what you observe in these two graphs with at least five total sentences.
+
+3 / 10 points. Show and describe results for three different values of n_powers and also for three different values of n_steps,
+                Describe what you see with at least eight sentences.
+
+the learning rate is not changed (and it doesn't have to be for this assignment)
+You don't use the air quality data at all. You read it but then you define sinusoidal curve and not use the data at all.
+Please go through the lecture again and ask questions if you have any.
+
+				
+======================================================================
+eswaransuraj Results and Discussion Grade is 23 / 40
+======================================================================
+
+======================================================================
+eswaransuraj FINAL GRADE is  83  / 100
+======================================================================
