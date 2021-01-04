@@ -1,0 +1,77 @@
+ 
+=======  ../../gradeA5.sh  ==============================
+ 
+[22;0t]0;IPython: solutions/eswaransuraj
+======================= Code Execution =======================
+
+Extracting python code from notebook named 'eswaransuraj_185268_17414127_ESWARAN-A5-2.ipynb' and storing in notebookcode.py
+Removing all statements that are not function or class defs or import statements.
+
+## Testing constructor ####################################################################
+
+    nnet = NeuralNetworkClassifierConvolutionalTorch([1, 10, 10], 
+                                                     [(2, (3, 3), (1, 1)), (3, (5, 5), (2, 2))],
+                                                     [30, 20], 2)
+
+    # check len(nnet.layers)
+    # check isinstance(nnet.layers[-1][-1], torch.nn.LogSoftmax)
+
+
+--- 10/10 points. nnet correctly has 6 pytorch layers.
+
+--- 10/10 points. Final layer is correct of type torch.nn.logSoftmax.
+
+## Testing train ####################################################################
+
+    np.random.seed(42)
+    X = np.random.uniform(0, 1, size=(100, 2))
+    T = (np.abs(X[:, 0:1] - X[:, 1:2]) < 0.5).astype(int)
+    results = multiple_runs_classification(5, X, T, (0.4, 0.3, 0.3), [10], 100, 0.01)
+
+Structure [10]: Repetition 1 2 3 4 5 
+
+--- 10/10 points. results correctly has 15 elements
+
+--- 10/10 points. results[0] correctly has 3 elements
+
+--- 10/10 points. max of results accuracy is correctly 100%.
+
+## Testing train ####################################################################
+
+    np.random.seed(42)
+    X = np.random.uniform(0, 1, size=(100, 1, 10, 10))
+    T = (X[:, 0, :, 0].mean(-1) < X[:, 0, :, -1].mean(-1)).astype(int).reshape(-1, 1)
+    results = multiple_runs_convolutional(20, X, T, (0.3, 0.3, 0.4), [[10, (4, 4), (1, 1)]], [10], 1000, 0.01)
+    mean_test = np.mean([r[2] for r in results if r[1] == 'test'])
+
+conv [[10, (4, 4), (1, 1)]] FC:[10] Repetition 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 
+
+--- 20/20 points. Mean of test accuracy 54.38 is correctly between 30 and 70%.
+
+======================================================================
+eswaransuraj Execution Grade is 70 / 70
+======================================================================
+
+3 / 5 points. Violin plots for each of the three datasets.
+
+5 / 10 points. Confusion matrices for the two classification problems.
+                to MNIST data.
+
+10 / 15 points. Total of at least 30 sentences discussion results of all three datasets.
+
+- no discussion on confusion matrices 
+- the confusion matrix for mnist should be 10x10 table
+- the violin plots should be aggragated for each dataset so it's easier to draw conclusions and compare
+- a lot of the discussion points are not needed / not important - no points cut
+
+======================================================================
+eswaransuraj Results and Discussion Grade is 18 / 30
+======================================================================
+
+======================================================================
+eswaransuraj FINAL GRADE is  88  / 100
+======================================================================
+
+Extra Credit: Earn one point of extra credit for adding code to one of your NeuralNetwork...Torch classes and training and using it on a GPU for one data set.      
+
+eswaransuraj EXTRA CREDIT is 0 / 1
