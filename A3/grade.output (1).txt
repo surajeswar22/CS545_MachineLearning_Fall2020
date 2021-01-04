@@ -1,0 +1,132 @@
+ 
+=======  ../../gradeA3.sh  ==============================
+ 
+[22;0t]0;IPython: solutions/eswaransuraj
+======================= Code Execution =======================
+
+Extracting python code from notebook named 'eswaransuraj_185268_16892647_ESWARAN-A3.ipynb' and storing in notebookcode.py
+Removing all statements that are not function or class defs or import statements.
+
+## Testing constructor ####################################################################
+
+    nnet = NeuralNetwork(2, [5, 10, 4], 3)
+    W_shapes = [W.shape for W in nnet.Ws]
+
+
+--- 10/10 points. W_shapes is correct value of [(3, 5), (6, 10), (11, 4), (5, 3)]
+
+## Testing constructor ####################################################################
+
+    G_shapes = [G.shape for G in nnet.Gs]
+
+
+--- 10/10 points. G_shapes is correct value of [(3, 5), (6, 10), (11, 4), (5, 3)]
+
+## Testing constructor ####################################################################
+
+    nnet.Ws[-1][0, 0] = 100.0
+    i = 3*5 + 6*10 + 11*4
+    # Does nnet.Ws[-1][2, 0] == nnet.all_weights[i]
+
+
+--- 10/10 points. nnet.Ws[-1][0, 0] equals nnet.all_weights[119]
+
+## Testing train ####################################################################
+
+    X = np.arange(200*3).reshape(-1, 3) + 100
+    T = X[:, 0:1] - X[:, 1:2] + 0.1 * X[:, 2:3]
+
+    np.random.seed(123)
+    nnet = NeuralNetwork(2, [10, 9, 8, 7], 1)
+    nnet.train(X, T, 1, 0.01, method='sgd')
+
+    Check nnet.Gs
+
+sgd: Epoch 1 Error=18.13985
+
+--- 10/10 points. Correct values in nnet.Gs
+
+## Testing train all methods ####################################################################
+
+    Now with two outputs (columns in T)
+
+    X and T from above.
+
+    np.random.seed(42)
+    nnet_sgd = NeuralNetwork(3, [100], 1)
+    nnet_sgd.train(X, T, 1000, 0.01, method='sgd')
+
+    np.random.seed(42)
+    nnet_adam = NeuralNetwork(2, [5, 4, 3], 2)
+    nnet_adam.train(X, T, 1000, 0.01, method='adam')
+
+    np.random.seed(42)
+    nnet_scg = NeuralNetwork(2, [5, 4, 3], 2)
+    nnet_scg.train(X, T, 1000, None, method='scg')  # learning_rate is None, not used by scg
+
+    def rmse(Y, T):
+        return np.sqrt(np.mean((T - Y)**2))
+
+    rmse_sgd = rmse(nnet_sgd.use(X), T)
+    rmse_adam = rmse(nnet_adam.use(X), T)
+    rmse_scg = rmse(nnet_scg.use(X), T)
+
+    Check [rmse_sgd, rmse_adam, rmse_scg]
+
+sgd: Epoch 100 Error=1.22910
+sgd: Epoch 200 Error=1.12912
+sgd: Epoch 300 Error=1.04617
+sgd: Epoch 400 Error=0.97588
+sgd: Epoch 500 Error=0.91511
+sgd: Epoch 600 Error=0.86156
+sgd: Epoch 700 Error=0.81361
+sgd: Epoch 800 Error=0.77008
+sgd: Epoch 900 Error=0.73010
+sgd: Epoch 1000 Error=0.69305
+Adam: Epoch 100 Error=0.38133
+Adam: Epoch 200 Error=0.10900
+Adam: Epoch 300 Error=0.09413
+Adam: Epoch 400 Error=0.08893
+Adam: Epoch 500 Error=0.08369
+Adam: Epoch 600 Error=0.07857
+Adam: Epoch 700 Error=0.07368
+Adam: Epoch 800 Error=0.06909
+Adam: Epoch 900 Error=0.06483
+Adam: Epoch 1000 Error=0.06089
+SCG: Epoch 100 Error=0.05530
+SCG: Epoch 200 Error=0.02893
+SCG: Epoch 300 Error=0.02045
+SCG: Epoch 400 Error=0.01996
+SCG: Epoch 500 Error=0.01512
+SCG: Epoch 600 Error=0.01126
+SCG: Epoch 700 Error=0.00989
+SCG: Epoch 800 Error=0.00461
+SCG: Epoch 900 Error=0.00299
+SCG: Epoch 1000 Error=0.00291
+
+--- 20/20 points. Correct rmse values.
+
+======================================================================
+eswaransuraj Execution Grade is 60 / 60
+======================================================================
+
+10 / 10 points. Reading data and defining Xtrain, Ttrain, Xtest, Ttest.
+
+10 / 10 points. Experiments with variety of values for n_hiddens_list, n_epochs, and learning_rate
+                for the three optimization methods.
+
+10 / 10 points. Plots of your best results each of the three methods.
+
+10 / 10 points. Good discussion of results you get, using at least 10 sentences.
+good job!
+======================================================================
+eswaransuraj Results and Discussion Grade is 40 / 40
+======================================================================
+
+======================================================================
+eswaransuraj FINAL GRADE is  100 / 100
+======================================================================
+
+Extra Credit: Earn one extra credit point by downloading a second, real data set and repeating the above experiments.
+
+eswaransuraj EXTRA CREDIT is 0 / 1
