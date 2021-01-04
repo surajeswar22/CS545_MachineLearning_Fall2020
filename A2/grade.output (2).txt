@@ -1,0 +1,209 @@
+ 
+=======  ../../gradeA2.sh  ==============================
+ 
+[22;0t]0;IPython: solutions_graded/eswaransuraj
+======================= Code Execution =======================
+
+Extracting python code from notebook named 'eswaransuraj_185268_16651417_ESWARAN-A2.ipynb' and storing in notebookcode.py
+Removing all statements that are not function or class defs or import statements.
+
+## Testing use ####################################################################
+
+    X = np.arange(20).reshape(-1, 2) + 5
+    T = X[:, 0:1] * 0.4 + (X[:, 1:2] / 10) ** 3
+    Ws = make_weights(2, [5, 4, 3], 1)
+    for W in Ws:
+        W[:] = np.linspace(-1, 1, W.size).reshape(W.shape)
+
+    stand_parms = {'Xmeans': np.array([[0]]), 'Xstds': np.array([[1]]),
+                   'Tmeans': np.array([[0]]), 'Tstds': np.array([[1]])}
+
+    def print_layers(what, lst):
+        print(f'{what}:')
+        for (i, element) in enumerate(lst):
+            print(f' Layer {i}:')
+            print(f' {element}')
+
+    # print('X is')
+    # print(X)
+    # print_layers('Ws', Ws)
+    # print('stand_parms is')
+    # print(stand_parms)
+
+    Ys = use(X, Ws, stand_parms)
+
+
+--- 5/5 points. Returned correct values in Ys.
+
+## Testing backward ####################################################################
+
+    X = np.arange(20).reshape(-1, 2) + 5
+    T = X[:, 0:1] * 0.4 + (X[:, 1:2] / 10) ** 3
+    Ws = make_weights(2, [5, 4, 3], 1)
+    for W in Ws:
+        W[:] = np.linspace(-1, 1, W.size).reshape(W.shape)
+
+    stand_parms = {'Xmeans': np.array([[0]]), 'Xstds': np.array([[1]]),
+                   'Tmeans': np.array([[0]]), 'Tstds': np.array([[1]])}
+    # print('X is')
+    # print(X)
+    # print('T is')
+    # print(T)
+    # print_layers('Ws', Ws)
+    # print('stand_parms is')
+    # print(stand_parms)
+
+    gradients = backward(X, T, Ws)
+
+
+--- 5/5 points. Returned correct values in gradients.
+
+## Testing use_asig ####################################################################
+
+    X = np.arange(20).reshape(-1, 2) + 5
+    T = X[:, 0:1] * 0.4 + (X[:, 1:2] / 10) ** 3
+    Ws = make_weights(2, [5, 4, 3], 1)
+    for W in Ws:
+        W[:] = np.linspace(-1, 1, W.size).reshape(W.shape)
+
+    stand_parms = {'Xmeans': np.array([[0]]), 'Xstds': np.array([[1]]),
+                   'Tmeans': np.array([[0]]), 'Tstds': np.array([[1]])}
+
+    # print('X is')
+    # print(X)
+    # print_layers('Ws', Ws)
+    # print('stand_parms is')
+    # print(stand_parms)
+
+    Ys = use_asig(X, Ws, stand_parms)
+
+
+--- 5/5 points. Returned correct values in Ys.
+
+## Testing backward_asig ####################################################################
+
+    X = np.arange(20).reshape(-1, 2) + 5
+    T = X[:, 0:1] * 0.4 + (X[:, 1:2] / 10) ** 3
+    Ws = make_weights(2, [5, 4, 3], 1)
+    for W in Ws:
+        W[:] = np.linspace(-1, 1, W.size).reshape(W.shape)
+
+    stand_parms = {'Xmeans': np.array([[0]]), 'Xstds': np.array([[1]]),
+                   'Tmeans': np.array([[0]]), 'Tstds': np.array([[1]])}
+    # print('X is')
+    # print(X)
+    # print('T is')
+    # print(T)
+    # print_layers('Ws', Ws)
+    # print('stand_parms is')
+    # print(stand_parms)
+
+    gradients = backward_asig(X, T, Ws)
+
+
+--- 5/5 points. Returned correct values in gradients.
+
+## Testing train_sgd ####################################################################
+
+    X = np.arange(20).reshape(-1, 2) + 5
+    T = X[:, 0:1] * 0.4 + (X[:, 1:2] / 10) ** 3
+    Ws = make_weights(2, [5, 4, 3], 1)
+    for W in Ws:
+        W[:] = np.linspace(-1, 1, W.size).reshape(W.shape)
+    # print('X is')
+    # print(X)
+    # print('T is')
+    # print(T)
+    # print_layers('Ws is', Ws)
+
+    Ws, stand_parms, error_trace = train_sgd(X, T, Ws, 0.1, 100)
+
+
+--- 10/10 points. Returned correct values in Ws.
+
+--- 10/10 points. Returned correct final error in error_trace.
+
+## Testing train_sgd_asig ####################################################################
+
+    X = np.arange(20).reshape(-1, 2) + 5
+    T = X[:, 0:1] * 0.4 + (X[:, 1:2] / 10) ** 3
+    Ws = make_weights(2, [5, 4, 3], 1)
+    for W in Ws:
+        W[:] = np.linspace(-1, 1, W.size).reshape(W.shape)
+    # print('X is')
+    # print(X)
+    # print('T is')
+    # print(T)
+    # print_layers('Ws is', Ws)
+
+    Ws, stand_parms, error_trace = train_sgd_asig(X, T, Ws, 0.1, 10000)
+
+
+--- 5/5 points. Returned correct values in Ws.
+
+--- 5/5 points. Returned correct final error in error_trace.
+
+## Testing train_sgd with 2 outputs ####################################################################
+
+    X = np.arange(20).reshape(-1, 2) + 5
+    T = np.hstack((X[:, 0:1] * 0.4, (X[:, 1:2] / 10) ** 3))
+    Ws = make_weights(2, [5, 4, 3], 2)
+    for W in Ws:
+        W[:] = np.linspace(-1, 1, W.size).reshape(W.shape)
+    # print('X is')
+    # print(X)
+    # print('T is')
+    # print(T)
+    # print_layers('Ws is', Ws)
+
+    Ws, stand_parms, error_trace = train_sgd(X, T, Ws, 0.2, 5000)
+
+
+--- 5/5 points. Returned correct values in Ws.
+
+--- 5/5 points. Returned correct final error in error_trace.
+
+======================================================================
+eswaransuraj Execution Grade is 60 / 60
+======================================================================
+
+10 / 10 points. Correct implementation of for loop to train neural nets with one, two, three
+                and four hidden layers each with 4 hidden units. Train each for 10,000 epochs
+                and a learning rate of 0.1.
+
+10 / 10 points. Construction of pandas Dataframe to display results of above four loop.
+
+10 / 10 points. Good discussion of the results from the four loop.  Use at least four sentences.
+
+10 / 10 points. Good discussion of results you get with the above loop using the asymmetric sigmoid
+                activation function.  Use at least six sentences.  In your discussion, compare differences
+                and similarities between the results for tanh and asymmetric sigmoid.
+
+======================================================================
+eswaransuraj Results and Discussion Grade is 40 / 40
+======================================================================
+
+======================================================================
+eswaransuraj FINAL GRADE is 100  / 100
+======================================================================
+
+eswaransuraj EXTRA CREDIT is 1 / 1
+
+Nicely done!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
